@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isArmstrong(int num)
+{
+    int original = num;
+    int digits = 0;
+    int sum = 0;
+    int temp = num;
+
+    // Count digits
+    while(temp > 0)
+    {
+        digits++;
+        temp /= 10;
+    }
+
+    temp = num;
+
+    // Calculate sum of digits^digits
+    while(temp > 0)
+    {
+        int digit = temp % 10;
+        sum += pow(digit, digits);
+        temp /= 10;
+    }
+
+    return sum == original;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    if(isArmstrong(n))
+        cout << "Armstrong Number";
+    else
+        cout << "Not an Armstrong Number";
+
+    return 0;
+}
